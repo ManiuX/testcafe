@@ -1,0 +1,16 @@
+import {Selector, t as I} from 'testcafe';
+
+class githubLoginPage{
+    username=Selector('#login_field');
+    password=Selector('#password');
+    loginButton=Selector('input').withAttribute('value','Sign in');
+
+    async login(username,password){
+        await I
+            .typeText(this.username,username)
+            .typeText(this.password,password)
+            .click(this.loginButton);
+    }
+}
+
+export default githubLoginPage = new githubLoginPage();

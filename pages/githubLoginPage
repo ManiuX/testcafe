@@ -4,12 +4,17 @@ class githubLoginPage{
     username=Selector('#login_field');
     password=Selector('#password');
     loginButton=Selector('input').withAttribute('value','Sign in');
+    errorMessage=Selector('div').nth(0);
 
     async login(username,password){
         await I
             .typeText(this.username,username)
             .typeText(this.password,password)
             .click(this.loginButton);
+    }
+
+    async islogin(expectText){
+        await I.expect((expectText.innerText).eql(expectText))
     }
 }
 
